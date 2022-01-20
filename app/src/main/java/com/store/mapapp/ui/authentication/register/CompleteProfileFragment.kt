@@ -1,10 +1,14 @@
 package com.store.mapapp.ui.authentication.register
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 import com.store.mapapp.R
 
 
@@ -49,5 +53,9 @@ class CompleteProfileFragment : Fragment() {
                 arguments = Bundle().apply {
                 }
             }
+    }
+    private lateinit var auth: FirebaseAuth
+    private fun authencateUser(email:String){
+
     }
 }

@@ -16,6 +16,7 @@ import com.google.maps.android.clustering.ClusterManager
 import com.store.mapapp.R
 import com.store.mapapp.model.Place
 import com.store.mapapp.utils.BitmapHelper
+import com.store.mapapp.utils.MarkerInfoWindowAdapter
 import com.store.mapapp.utils.PlaceRenderer
 import com.store.mapapp.utils.PlacesReader
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -56,8 +57,8 @@ class HomeFragment : Fragment() {
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), 20))
             }
 
-            //addMarkers(googleMap)
-            addClusteredMarkers(googleMap)
+            addMarkers(googleMap)
+          //  addClusteredMarkers(googleMap)
 
             // Set custom info window adapter
             // googleMap.setInfoWindowAdapter(MarkerInfoWindowAdapter(this))
@@ -78,7 +79,7 @@ class HomeFragment : Fragment() {
             )
 
         // Set custom info window adapter
-        clusterManager.markerCollection.setInfoWindowAdapter(MarkerInfoWindowAdapter(this))
+        clusterManager.markerCollection.setInfoWindowAdapter(MarkerInfoWindowAdapter(requireContext()))
 
         // Add the places to the ClusterManager
         clusterManager.addItems(places)
@@ -121,7 +122,7 @@ class HomeFragment : Fragment() {
                 .fillColor(
                     ContextCompat.getColor(
                         requireContext(),
-                        R.color.colorPrimaryTranslucent
+                        R.color.colorPrimary
                     )
                 )
                 .strokeColor(ContextCompat.getColor(requireContext(), R.color.colorPrimary))
@@ -141,17 +142,13 @@ class HomeFragment : Fragment() {
      * Adds markers to the map. These markers won't be clustered.
      */
     private fun addMarkers(googleMap: GoogleMap) {
-        places.forEach { place ->
-            val marker = googleMap.addMarker(
-                MarkerOptions()
-                    .title(place.name)
-                    .position(place.latLng)
-                    .icon(bicycleIcon)
-            )
-            // Set place as the tag on the marker object so it can be referenced within
-            // MarkerInfoWindowAdapter
-            marker.tag = place
-        }
+        val sydney = LatLng(-33.852, 151.211)
+        googleMap.addMarker(
+            MarkerOptions()
+                .position(sydney)
+                .title("Marker in Sydney")
+        )
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 
 

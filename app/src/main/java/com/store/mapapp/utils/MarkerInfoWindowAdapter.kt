@@ -20,7 +20,7 @@ import android.view.View
 import android.widget.TextView
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
-import com.google.codelabs.buildyourfirstmap.place.Place
+//import com.google.codelabs.buildyourfirstmap.place.Place
 import com.store.mapapp.R
 import com.store.mapapp.model.Place
 
@@ -30,10 +30,10 @@ class MarkerInfoWindowAdapter(private val context: Context) : GoogleMap.InfoWind
         val place = marker?.tag as? Place ?: return null
 
         // 2. Inflate view and set title, address and rating
-        val view = LayoutInflater.from(context).inflate(R.layout.markerd_info_contents, null)
-        view.findViewById<TextView>(R.id.text_view_title).text = place.name
-        view.findViewById<TextView>(R.id.text_view_address).text = place.address
-        view.findViewById<TextView>(R.id.text_view_rating).text = "Rating: %.2f".format(place.rating)
+        val view = LayoutInflater.from(context).inflate(R.layout.fragment_complete_profile, null)
+       // view.findViewById<TextView>(R.id.text_view_title).text = place.name
+     //   view.findViewById<TextView>(R.id.text_view_address).text = place.address
+     //   view.findViewById<TextView>(R.id.text_view_rating).text = "Rating: %.2f".format(place.rating)
 
         return view
     }

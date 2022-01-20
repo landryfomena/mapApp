@@ -11,7 +11,7 @@
         android:theme="@style/Theme.MapApp">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="${GOOGLE_MAPS_API_KEY}" />
+            android:value="AIzaSyAE0Fao7OiJkE30vTNniR8yVIkSuc60tKk" />
         <activity android:name=".ui.AuthenticationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
